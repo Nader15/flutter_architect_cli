@@ -1,0 +1,24 @@
+# Dart
+.dart_tool/
+.packages
+.pub/
+pubspec.lock
+build/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated projects
+my_app/
+test_project/
+
+# Compiled executables
+flutter_architect
+flutter_architect.exe
