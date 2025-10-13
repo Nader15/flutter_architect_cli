@@ -1,9 +1,13 @@
 # Changelog
 
+## 1.0.4
+
+- Added proper Flutter example project
+- Fixed example detection for pub.dev
+
 ## 1.0.3
 
 - Added comprehensive API documentation
-- Created usage example
 - Fixed all pub.dev analysis issues
 
 ## 1.0.2
