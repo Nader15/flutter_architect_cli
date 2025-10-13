@@ -1,8 +1,9 @@
 name: flutter_architect_cli
 description: A CLI tool to scaffold Flutter projects with multiple architecture patterns (clean architecture is architecture pattern)
-version: 1.0.1
+version: 1.0.2
 repository: https://github.com/Nader15/flutter_architect_cli.git
 homepage: https://github.com/Nader15/flutter_architect_cli.git
+issue_tracker: https://github.com/Nader15/flutter_architect_cli/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
