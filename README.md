@@ -7,7 +7,7 @@
 
 
 
-A CLI tool to scaffold Flutter multiple architecture patterns projects automatically (clean architecture is architecture pattern).
+A CLI tool to scaffold Flutter multiple architecture patterns projects automatically (clean architecture is first architecture pattern in this package).
 
 With feature-first organization, dependency injection setup, and BLoC state management.
 
