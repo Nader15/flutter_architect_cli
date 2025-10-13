@@ -1,4 +1,11 @@
-# Flutter Architect CLI
+# Flutter Architect CLI 🏗️
+
+
+[![pub package](https://img.shields.io/pub/v/flutter_architect_cli.svg)](https://pub.dev/packages/flutter_architect_cli)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/Nader15/flutter_architect_cli.svg?style=social)](https://github.com/Nader15/flutter_architect_cli/stargazers)
+
+
 
 A CLI tool to scaffold Flutter multiple architecture patterns projects automatically (clean architecture is architecture pattern).
 
