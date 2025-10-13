@@ -1,8 +1,14 @@
 import 'package:args/args.dart';
 import '../../flutter_architect_cli.dart';
 
-/// Command to create a new Flutter Clean Architecture project
+/// Command to create a new Flutter Clean Architecture project.
+///
+/// This command scaffolds the complete folder structure and foundational
+/// files for a Clean Architecture Flutter project.
 class CreateCommand implements Command {
+  /// Creates a new [CreateCommand] instance.
+  CreateCommand();
+
   @override
   void execute(ArgResults results) {
     final projectName =
