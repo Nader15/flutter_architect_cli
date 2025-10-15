@@ -1,6 +1,6 @@
 name: flutter_architect_cli
 description: A CLI tool to scaffold Flutter projects with multiple architecture patterns (Clean Architecture, MVC, MVVM, MVP)
-version: 1.0.5
+version: 1.0.6
 repository: https://github.com/Nader15/flutter_architect_cli.git
 homepage: https://github.com/Nader15/flutter_architect_cli.git
 issue_tracker: https://github.com/Nader15/flutter_architect_cli/issues

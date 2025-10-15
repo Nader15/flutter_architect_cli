@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+/// Entry point of the example application.
 void main() {
   runApp(const MyApp());
 }
 
+/// Minimal example widget used for pub.dev preview.
 class MyApp extends StatelessWidget {
+  /// Creates the root example widget.
   const MyApp({super.key});
 
   @override

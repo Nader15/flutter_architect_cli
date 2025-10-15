@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.6
+
+- Enhance documentation for architecture patterns and example application
+
 ## 1.0.5
 
 - Added interactive architecture pattern selection (Clean/MVC/MVVM/MVP)

@@ -3,13 +3,19 @@ import 'package:args/args.dart';
 import '../../flutter_architect_cli.dart';
 
 /// Architecture patterns available for Flutter projects
+/// Supported architecture patterns for project scaffolding.
 enum ArchitecturePattern {
+  /// Clean Architecture pattern option
   cleanArchitecture('Clean Architecture Pattern'),
+  /// Model-View-Controller pattern option
   mvc('MVC Pattern'),
+  /// Model-View-ViewModel pattern option
   mvvm('MVVM Pattern'),
+  /// Model-View-Presenter pattern option
   mvp('MVP Pattern');
 
   const ArchitecturePattern(this.displayName);
+  /// Human-readable name for the pattern
   final String displayName;
 }
 
@@ -17,6 +23,7 @@ enum ArchitecturePattern {
 ///
 /// This command scaffolds the complete folder structure and foundational
 /// files for a Flutter project with the chosen architecture pattern.
+/// Handles the `create` command to scaffold a new project.
 class CreateCommand implements Command {
   /// Creates a new [CreateCommand] instance.
   CreateCommand();
@@ -33,7 +40,7 @@ class CreateCommand implements Command {
 
     // Show architecture pattern selection menu
     final selectedPattern = _selectArchitecturePattern();
-    
+
     if (selectedPattern == ArchitecturePattern.cleanArchitecture) {
       // ignore: avoid_print
       print('📁 Selected: ${selectedPattern.displayName}');
@@ -63,7 +70,8 @@ class CreateCommand implements Command {
       // ignore: avoid_print
       print('🚧 Coming Soon!');
       // ignore: avoid_print
-      print('${selectedPattern.displayName} support is currently under development.');
+      print(
+          '${selectedPattern.displayName} support is currently under development.');
       // ignore: avoid_print
       print('Please try Clean Architecture Pattern for now.');
     }
@@ -84,15 +92,19 @@ class CreateCommand implements Command {
     // ignore: avoid_print
     print('');
     // ignore: avoid_print
-    stdout.write('Enter your choice (1-${ArchitecturePattern.values.length}): ');
+    stdout
+        .write('Enter your choice (1-${ArchitecturePattern.values.length}): ');
 
     try {
       String? input = stdin.readLineSync();
       int? choice = int.tryParse(input ?? '');
 
-      while (choice == null || choice < 1 || choice > ArchitecturePattern.values.length) {
+      while (choice == null ||
+          choice < 1 ||
+          choice > ArchitecturePattern.values.length) {
         // ignore: avoid_print
-        stdout.write('Please enter a valid choice (1-${ArchitecturePattern.values.length}): ');
+        stdout.write(
+            'Please enter a valid choice (1-${ArchitecturePattern.values.length}): ');
         input = stdin.readLineSync();
         choice = int.tryParse(input ?? '');
       }
