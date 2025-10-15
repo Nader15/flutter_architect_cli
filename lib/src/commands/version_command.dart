@@ -1,11 +1,14 @@
+import 'package:args/args.dart';
+import 'command.dart';
+
 /// Command to display the current version of the CLI.
-class VersionCommand {
+class VersionCommand implements Command {
   /// Creates a new [VersionCommand] instance.
   VersionCommand();
 
-  /// Executes the version command and prints the current version.
-  void execute() {
+  @override
+  void execute(ArgResults results) {
     // ignore: avoid_print
-    print('Flutter Architect CLI v1.0.2');
+    print('Flutter Architect CLI v1.0.5');
   }
 }

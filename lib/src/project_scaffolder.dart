@@ -35,7 +35,6 @@ class ProjectScaffolder {
       'lib/features/auth/domain/entities',
       'lib/features/auth/domain/repositories',
       'lib/features/auth/domain/usecases',
-      'lib/features/auth/presentation/bloc',
       'lib/features/auth/presentation/pages',
       'lib/features/auth/presentation/widgets',
       'test',
@@ -198,6 +197,57 @@ class NoParams {}
 class AppConstants {
   /// The application name
   static const String appName = '$projectName';
+}
+''');
+
+    // Core Utils - Logger
+    _writeFile('lib/core/utils/logger.dart', '''
+/// Simple logger utility
+class Logger {
+  /// Logs an informational message
+  static void info(String message) {
+    // ignore: avoid_print
+    print('[INFO] ' + message);
+  }
+
+  /// Logs a warning message
+  static void warn(String message) {
+    // ignore: avoid_print
+    print('[WARN] ' + message);
+  }
+
+  /// Logs an error message
+  static void error(String message, [Object? error, StackTrace? stackTrace]) {
+    // ignore: avoid_print
+    print('[ERROR] ' + message);
+    if (error != null) {
+      // ignore: avoid_print
+      print('  Cause: ' + error.toString());
+    }
+    if (stackTrace != null) {
+      // ignore: avoid_print
+      print(stackTrace);
+    }
+  }
+}
+''');
+
+    // Core Utils - Validators
+    _writeFile('lib/core/utils/validators.dart', '''
+/// Common input validators
+class Validators {
+  /// Returns true if the string looks like a valid email address
+  static bool isValidEmail(String value) {
+    final trimmed = value.trim();
+    final atIndex = trimmed.indexOf('@');
+    final dotIndex = trimmed.lastIndexOf('.');
+    return atIndex > 0 && dotIndex > atIndex + 1 && dotIndex < trimmed.length - 1;
+  }
+
+  /// Returns true if the password meets basic strength rules
+  static bool isValidPassword(String value, {int minLength = 8}) {
+    return value.trim().length >= minLength;
+  }
 }
 ''');
   }

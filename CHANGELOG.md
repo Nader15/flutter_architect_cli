@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.5
+
+- Added interactive architecture pattern selection (Clean/MVC/MVVM/MVP)
+- Default scaffolding creates Clean Architecture; others show "Coming Soon"
+- Removed `presentation/bloc` from generated structure
+- Added `lib/core/utils/logger.dart` and `lib/core/utils/validators.dart`
+- Updated README and help texts
+
 ## 1.0.4
 
 - Added proper Flutter example project

@@ -26,7 +26,7 @@ void main(List<String> arguments) {
         break;
       case 'version':
         final command = VersionCommand();
-        command.execute();
+        command.execute(result.command!);
         break;
       default:
         _printUsage(parser);
@@ -48,7 +48,7 @@ Usage:
   flutter_architect <command> [arguments]
 
 Commands:
-  create    Create a new Flutter Clean Architecture project
+  create    Create a new Flutter project with architecture pattern selection
   version   Print the current version
 
 Run "flutter_architect help <command>" for more information about a command.

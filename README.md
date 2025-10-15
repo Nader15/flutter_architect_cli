@@ -7,7 +7,9 @@
 
 
 
-A CLI tool to scaffold Flutter multiple architecture patterns projects automatically (clean architecture is first architecture pattern in this package).
+A CLI tool to scaffold Flutter projects with multiple architecture patterns automatically.
+
+Choose from Clean Architecture, MVC, MVVM, or MVP patterns with interactive selection menu.
 
 With feature-first organization, dependency injection setup, and BLoC state management.
 
@@ -15,13 +17,14 @@ Best practices and organized structure.
 
 ## Features
 
-- 🚀 **One-command setup** for Clean Architecture
-- 📁 **Feature-first organization**
+- 🚀 **Interactive architecture pattern selection**
+- 📁 **Feature-first organization** (Clean Architecture)
 - 🏗️ **Pre-configured dependency injection** with GetIt
 - 🔄 **BLoC state management** ready
 - 📝 **Pre-built core components** (use cases, failures, utilities)
 - 🎯 **Modular structure** for scalable apps
--  ⚡ **Zero configuration** required
+- ⚡ **Zero configuration** required
+- 🎨 **Multiple architecture patterns** (Clean Architecture, MVC, MVVM, MVP)
 
 ## Installation
 
@@ -29,3 +32,30 @@ Best practices and organized structure.
 
 ```bash
 dart pub global activate flutter_architect_cli
+```
+
+## Usage
+
+Create a new Flutter project with architecture pattern selection:
+
+```bash
+flutter_architect create my_app
+```
+
+You'll be prompted to select an architecture pattern:
+
+```
+🚀 Creating Flutter project: my_app
+
+Please select an architecture pattern:
+
+1. Clean Architecture Pattern
+2. MVC Pattern
+3. MVVM Pattern
+4. MVP Pattern
+
+Enter your choice (1-4):
+```
+
+- **Clean Architecture Pattern**: ✅ Fully implemented with complete project structure
+- **MVC, MVVM, MVP Patterns**: 🚧 Coming Soon! (Currently under development)
