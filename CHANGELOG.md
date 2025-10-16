@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.7
+
+- [NEW] Added complete MVC Pattern scaffolding with models, views, controllers, and services
+- [NEW] Added complete MVVM Pattern scaffolding with view models, repositories, and dependency injection
+- [NEW] Added complete MVP Pattern scaffolding with presenters, view interfaces, and repositories
+- [IMPROVED] Enhanced interactive architecture selection menu with better UX
+- [IMPROVED] Expanded core utilities and helper functions across all patterns
+- [IMPROVED] Added comprehensive example implementations for each pattern
+- [IMPROVED] Better error handling and validation in generated code
+- [DOCS] Complete documentation for all four architecture
+
 ## 1.0.6
 
 - Enhance documentation for architecture patterns and example application

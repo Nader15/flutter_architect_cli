@@ -7,14 +7,18 @@ import '../../flutter_architect_cli.dart';
 enum ArchitecturePattern {
   /// Clean Architecture pattern option
   cleanArchitecture('Clean Architecture Pattern'),
+
   /// Model-View-Controller pattern option
   mvc('MVC Pattern'),
+
   /// Model-View-ViewModel pattern option
   mvvm('MVVM Pattern'),
+
   /// Model-View-Presenter pattern option
   mvp('MVP Pattern');
 
   const ArchitecturePattern(this.displayName);
+
   /// Human-readable name for the pattern
   final String displayName;
 }
@@ -32,7 +36,8 @@ class CreateCommand implements Command {
   void execute(ArgResults results) {
     final projectName =
         results.rest.isNotEmpty ? results.rest[0] : 'my_flutter_app';
-
+    // ignore: avoid_print
+    print('');
     // ignore: avoid_print
     print('🚀 Creating Flutter project: $projectName');
     // ignore: avoid_print
@@ -41,39 +46,54 @@ class CreateCommand implements Command {
     // Show architecture pattern selection menu
     final selectedPattern = _selectArchitecturePattern();
 
+    // In the execute method of CreateCommand, replace this part:
     if (selectedPattern == ArchitecturePattern.cleanArchitecture) {
       // ignore: avoid_print
+      print('');
+      // ignore: avoid_print
       print('📁 Selected: ${selectedPattern.displayName}');
       // ignore: avoid_print
       print('');
 
-      final scaffolder = ProjectScaffolder(projectName);
+      final scaffolder =
+          ProjectScaffolder(projectName, pattern: selectedPattern);
       scaffolder.scaffold();
-
-      // ignore: avoid_print
-      print('✅ Project created successfully!');
+    } else if (selectedPattern == ArchitecturePattern.mvvm) {
       // ignore: avoid_print
       print('');
       // ignore: avoid_print
-      print('Next steps:');
+      print('📁 Selected: ${selectedPattern.displayName}');
       // ignore: avoid_print
-      print('  cd $projectName');
+      print('');
+
+      final scaffolder =
+          ProjectScaffolder(projectName, pattern: selectedPattern);
+      scaffolder.scaffold();
+    } else if (selectedPattern == ArchitecturePattern.mvc) {
       // ignore: avoid_print
-      print('  flutter pub get');
+      print('');
       // ignore: avoid_print
-      print('  flutter run');
+      print('📁 Selected: ${selectedPattern.displayName}');
+      // ignore: avoid_print
+      print('');
+
+      final scaffolder =
+          ProjectScaffolder(projectName, pattern: selectedPattern);
+      scaffolder.scaffold();
+    } else if (selectedPattern == ArchitecturePattern.mvp) {
+      // ignore: avoid_print
+      print('');
+      // ignore: avoid_print
+      print('📁 Selected: ${selectedPattern.displayName}');
+      // ignore: avoid_print
+      print('');
+
+      final scaffolder =
+          ProjectScaffolder(projectName, pattern: selectedPattern);
+      scaffolder.scaffold();
     } else {
       // ignore: avoid_print
-      print('📁 Selected: ${selectedPattern.displayName}');
-      // ignore: avoid_print
-      print('');
-      // ignore: avoid_print
-      print('🚧 Coming Soon!');
-      // ignore: avoid_print
-      print(
-          '${selectedPattern.displayName} support is currently under development.');
-      // ignore: avoid_print
-      print('Please try Clean Architecture Pattern for now.');
+      print('⚠️ The selected architecture pattern is not yet implemented.');
     }
   }
 
