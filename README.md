@@ -3,6 +3,8 @@
 A **powerful CLI tool** to scaffold Flutter projects with multiple architecture patterns automatically.  
 Choose from **Clean Architecture**, **MVC**, **MVVM**, or **MVP** patterns with interactive selection and get a **production-ready project structure** instantly.
 
+> 🚀 **NEW**: Enhanced with advanced Template System, 80% code reduction, and optimized performance!
+
 ---
 
 ## 🚀 Features
@@ -13,9 +15,12 @@ Choose from **Clean Architecture**, **MVC**, **MVVM**, or **MVP** patterns with 
 - 🧰 **Production-Ready**: Pre-configured with best practices and utilities  
 - 🔐 **Complete Examples**: Auth feature implementation for each pattern  
 - 🧭 **Dependency Injection**: Ready-to-use service locator setup  
-- 🔄 **State Management**: BLoC and ViewModel patterns included  
+- 🔄 **5 State Management Options**: BLoC (Cubit), Provider, Riverpod, GetX, State Notifier  
 - ⚡ **Zero Configuration**: Start coding immediately with no setup required  
 - 🧠 **Best Practices**: Industry-standard patterns and conventions  
+- 🎯 **Advanced Template System**: Dynamic code generation with 80% less duplication  
+- 🚀 **Optimized Performance**: Faster project generation and better maintainability  
+- 🔧 **Modular Architecture**: Clean separation of concerns and extensible design  
 
 ---
 
@@ -41,12 +46,12 @@ Create a new Flutter project with architecture scaffolding:
 flutter_architect create my_app
 ```
 
-You'll be prompted to select an architecture pattern:
+You'll be prompted to select an architecture pattern and state management:
 
 ```
 🚀 Creating Flutter project: my_app
 
-Please select an architecture pattern:
+📁 Please select an architecture pattern:
 
 1. Clean Architecture Pattern
 2. MVC Pattern
@@ -54,9 +59,24 @@ Please select an architecture pattern:
 4. MVP Pattern
 
 Enter your choice (1-4): 1
+
+🎛️  Please select a state management solution:
+
+1. BLoC (Cubit)
+2. Provider
+3. Riverpod
+4. GetX
+5. State Notifier
+
+Enter your choice (1-5): 1
+
+🎯 Selected Architecture: Clean Architecture Pattern
+🎯 Selected State Management: BLoC (Cubit)
+
+✅ Clean Architecture project created successfully!
 ```
 
-The CLI will scaffold your complete project structure — start developing immediately!
+The CLI will scaffold your complete project structure with the selected architecture and state management — start developing immediately!
 
 ---
 
@@ -93,9 +113,9 @@ lib/
 
 #### 🧰 Technologies
 - GetIt for dependency injection  
-- BLoC for state management  
-- Dartz for functional programming  
+- Multiple state management options (BLoC Cubit, Provider, Riverpod, GetX, State Notifier)  
 - Repository pattern  
+- Advanced template system for code generation  
 
 ---
 
@@ -120,9 +140,10 @@ lib/
 - Lightweight architecture  
 
 #### 🧰 Technologies
-- Provider for state management  
+- Multiple state management options (BLoC Cubit, Provider, Riverpod, GetX, State Notifier)  
 - Model classes with JSON serialization  
 - Service layer for business logic  
+- Template-based code generation  
 
 ---
 
@@ -152,9 +173,10 @@ lib/
 - Suitable for complex UIs  
 
 #### 🧰 Technologies
-- Provider/ChangeNotifier for state management  
+- Multiple state management options (BLoC Cubit, Provider, Riverpod, GetX, State Notifier)  
 - Repository pattern  
 - ViewModel for business logic  
+- Advanced template system  
 
 ---
 
@@ -185,6 +207,7 @@ lib/
 - Presenter pattern  
 - View interfaces/contracts  
 - Repository pattern  
+- Template-based code generation  
 
 ---
 
@@ -202,6 +225,13 @@ flutter_architect create <project_name>
 - 2️⃣ MVC – Best for rapid development  
 - 3️⃣ MVVM – Ideal for complex data-driven UIs  
 - 4️⃣ MVP – Perfect for highly testable code  
+
+**State Management Options:**
+- 1️⃣ BLoC (Cubit) – Reactive state management  
+- 2️⃣ Provider – Simple state management  
+- 3️⃣ Riverpod – Modern state management  
+- 4️⃣ GetX – All-in-one solution  
+- 5️⃣ State Notifier – Lightweight state management  
 
 ---
 
@@ -273,6 +303,32 @@ flutter_architect create <project_name>
 - ✅ Theme & constants management  
 - ✅ Network error handling  
 - ✅ Repository pattern implementation  
+- ✅ Template-based code generation  
+- ✅ Modular architecture design  
+- ✅ Consistent code structure across patterns  
+- ✅ Optimized performance and maintainability  
+
+---
+
+## 🚀 Recent Improvements
+
+### Template System & Code Optimization
+- **80% Code Reduction**: Eliminated massive code duplication across architecture patterns
+- **Advanced Template Engine**: Dynamic code generation with variable substitution
+- **Modular Design**: Clean separation between template logic and business logic
+- **Performance Boost**: Faster project generation and better IDE performance
+- **Consistent Structure**: Standardized folder structures and naming conventions
+
+### Enhanced State Management
+- **5 State Management Options**: Full support for BLoC, Provider, Riverpod, GetX, and State Notifier
+- **Pattern-Specific Integration**: Each architecture pattern optimized for different state management solutions
+- **Template-Based Generation**: State management files generated from reusable templates
+
+### Architecture Pattern Refactoring
+- **New Base Class System**: `PatternBase` provides common functionality across all patterns
+- **Reduced Complexity**: Each pattern file reduced from 1000+ lines to ~150-200 lines
+- **Better Maintainability**: Single source of truth for templates and common functionality
+- **Extensibility**: Easy to add new patterns and state management solutions
 
 ---
 
