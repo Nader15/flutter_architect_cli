@@ -5,8 +5,10 @@ import '../commands/create_command.dart';
 class TemplateEngine {
   /// File writer utility
   final FileWriter fileWriter;
+
   /// Project name
   final String projectName;
+
   /// State management choice
   final StateManagement stateManagement;
 

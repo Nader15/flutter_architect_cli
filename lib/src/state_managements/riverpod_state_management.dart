@@ -6,6 +6,7 @@ import 'base_state_management.dart';
 class RiverpodStateManagement extends BaseStateManagement {
   /// File writer utility
   final FileWriter fileWriter;
+
   /// Constructor
   RiverpodStateManagement(this.fileWriter) : super(StateManagement.riverpod);
 

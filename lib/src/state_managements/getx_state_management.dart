@@ -6,6 +6,7 @@ import 'base_state_management.dart';
 class GetxStateManagement extends BaseStateManagement {
   /// File writer utility
   final FileWriter fileWriter;
+
   /// Constructor
   GetxStateManagement(this.fileWriter) : super(StateManagement.getx);
 

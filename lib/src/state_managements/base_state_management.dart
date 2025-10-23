@@ -4,6 +4,7 @@ import '../../flutter_architect_cli.dart';
 abstract class BaseStateManagement {
   /// The selected state management
   final StateManagement stateManagement;
+
   /// Constructor
   BaseStateManagement(this.stateManagement);
 

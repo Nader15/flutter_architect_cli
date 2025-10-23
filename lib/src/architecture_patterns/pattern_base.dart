@@ -10,14 +10,19 @@ import '../state_managements/state_management_factory.dart';
 abstract class PatternBase {
   /// The name of the project
   late final String projectName;
+
   /// File writer utility
   final FileWriter fileWriter;
+
   /// The state management solution to use
   final StateManagement stateManagement;
+
   /// State management implementation
   late final BaseStateManagement stateManagementImpl;
+
   /// Template engine for file generation
   late final TemplateEngine templateEngine;
+
   /// Creates a new PatternBase instance
   PatternBase(this.projectName, this.fileWriter, this.stateManagement) {
     stateManagementImpl =

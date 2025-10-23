@@ -5,6 +5,7 @@ import 'package:path/path.dart' as path;
 class FileWriter {
   /// The project name or root directory
   final String projectName;
+
   /// Constructor
   FileWriter(this.projectName);
 

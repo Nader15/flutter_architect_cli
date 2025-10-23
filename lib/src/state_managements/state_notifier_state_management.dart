@@ -6,6 +6,7 @@ import 'base_state_management.dart';
 class StateNotifierStateManagement extends BaseStateManagement {
   /// File writer utility
   final FileWriter fileWriter;
+
   /// Constructor
   StateNotifierStateManagement(this.fileWriter)
       : super(StateManagement.stateNotifier);
