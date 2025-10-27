@@ -9,6 +9,6 @@ class VersionCommand implements Command {
   @override
   void execute(ArgResults results) {
     // ignore: avoid_print
-    print('Flutter Architect CLI v1.0.6');
+    print('Flutter Architect CLI v1.1.0');
   }
 }

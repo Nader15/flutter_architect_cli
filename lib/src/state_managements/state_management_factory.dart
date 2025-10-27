@@ -5,7 +5,6 @@ import 'bloc_state_management.dart';
 import 'provider_state_management.dart';
 import 'riverpod_state_management.dart';
 import 'getx_state_management.dart';
-import 'state_notifier_state_management.dart';
 
 /// Factory class to create state management instances
 class StateManagementFactory {
@@ -23,8 +22,6 @@ class StateManagementFactory {
         return RiverpodStateManagement(fileWriter);
       case StateManagement.getx:
         return GetxStateManagement(fileWriter);
-      case StateManagement.stateNotifier:
-        return StateNotifierStateManagement(fileWriter);
     }
   }
 }

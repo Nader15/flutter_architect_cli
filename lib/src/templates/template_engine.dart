@@ -59,8 +59,6 @@ class TemplateEngine {
         return "import 'package:flutter_riverpod/flutter_riverpod.dart';";
       case StateManagement.getx:
         return "import 'package:get/get.dart';";
-      case StateManagement.stateNotifier:
-        return "import 'package:flutter_state_notifier/flutter_state_notifier.dart';";
     }
   }
 
@@ -75,8 +73,6 @@ class TemplateEngine {
         return 'notifier';
       case StateManagement.getx:
         return 'controller';
-      case StateManagement.stateNotifier:
-        return 'notifier';
     }
   }
 
@@ -91,8 +87,6 @@ class TemplateEngine {
         return 'auth_notifier.dart';
       case StateManagement.getx:
         return 'auth_controller.dart';
-      case StateManagement.stateNotifier:
-        return 'auth_notifier.dart';
     }
   }
 }

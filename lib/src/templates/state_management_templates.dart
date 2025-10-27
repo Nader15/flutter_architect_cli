@@ -211,6 +211,7 @@ class AuthState {
   static const String riverpodAuthNotifierTemplate = '''
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '{{repositoryImport}}';
+import '../../data/repositories_impl/auth_repository_impl.dart';
 import 'auth_state.dart';
 
 class AuthNotifier extends StateNotifier<AuthState> {
@@ -415,21 +416,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
       ),
       home: const $homeWidget(),
       debugShowCheckedModeBanner: false,
-    )''';
-      case StateManagement.stateNotifier:
-        return '''MultiStateNotifierProvider(
-      providers: [
-        // Add your StateNotifier providers here
-      ],
-      child: MaterialApp(
-        title: '$projectName',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true,
-        ),
-        home: const $homeWidget(),
-        debugShowCheckedModeBanner: false,
-      ),
     )''';
     }
   }

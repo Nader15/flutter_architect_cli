@@ -1,5 +1,13 @@
 # Changelog
 
+
+## 1.1.0
+
+- Update import paths and restructure project files for improved organization
+- remove MVP Pattern and State Notifier State Management from CLI options
+- Update and Improve project structure for MVVM pattern
+- Executes flutter pub get after scaffolding completes AND Automatic dependency installation
+
 ## 1.0.9
 
 - Formatted code and improved readability

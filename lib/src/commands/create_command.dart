@@ -12,10 +12,7 @@ enum ArchitecturePattern {
   mvc('MVC Pattern'),
 
   /// Model-View-ViewModel pattern option
-  mvvm('MVVM Pattern'),
-
-  /// Model-View-Presenter pattern option
-  mvp('MVP Pattern');
+  mvvm('MVVM Pattern');
 
   const ArchitecturePattern(this.displayName);
 
@@ -35,10 +32,7 @@ enum StateManagement {
   riverpod('Riverpod'),
 
   /// GetX state management
-  getx('GetX'),
-
-  /// State Notifier state management
-  stateNotifier('State Notifier');
+  getx('GetX');
 
   const StateManagement(this.displayName);
 

@@ -231,9 +231,6 @@ abstract class PatternBase {
       case StateManagement.getx:
         _createGetxAuthFiles();
         break;
-      case StateManagement.stateNotifier:
-        _createStateNotifierAuthFiles();
-        break;
     }
   }
 
@@ -252,7 +249,7 @@ abstract class PatternBase {
       cubitPath,
       StateManagementTemplates.blocAuthCubitTemplate,
       {
-        'repositoryImport': '../../../domain/repositories/auth_repository.dart',
+        'repositoryImport': '../../domain/repositories/auth_repository.dart',
         'repositoryType': 'AuthRepository',
       },
     );
@@ -264,7 +261,7 @@ abstract class PatternBase {
       'lib/features/auth/presentation/provider/auth_provider.dart',
       StateManagementTemplates.providerAuthProviderTemplate,
       {
-        'repositoryImport': '../../../domain/repositories/auth_repository.dart',
+        'repositoryImport': '../../domain/repositories/auth_repository.dart',
         'repositoryType': 'AuthRepository',
       },
     );
@@ -282,7 +279,7 @@ abstract class PatternBase {
       'lib/features/auth/presentation/notifier/auth_notifier.dart',
       StateManagementTemplates.riverpodAuthNotifierTemplate,
       {
-        'repositoryImport': '../../../domain/repositories/auth_repository.dart',
+        'repositoryImport': '../../domain/repositories/auth_repository.dart',
         'repositoryType': 'AuthRepository',
         'repositoryImpl': 'AuthRepositoryImpl',
       },
@@ -295,25 +292,7 @@ abstract class PatternBase {
       'lib/features/auth/presentation/controller/auth_controller.dart',
       StateManagementTemplates.getxAuthControllerTemplate,
       {
-        'repositoryImport': '../../../domain/repositories/auth_repository.dart',
-        'repositoryType': 'AuthRepository',
-      },
-    );
-  }
-
-  /// Creates StateNotifier auth files
-  void _createStateNotifierAuthFiles() {
-    templateEngine.writeTemplateFile(
-      'lib/features/auth/presentation/notifier/auth_state.dart',
-      StateManagementTemplates.stateNotifierAuthStateTemplate,
-      {},
-    );
-
-    templateEngine.writeTemplateFile(
-      'lib/features/auth/presentation/notifier/auth_notifier.dart',
-      StateManagementTemplates.stateNotifierAuthNotifierTemplate,
-      {
-        'repositoryImport': '../../../domain/repositories/auth_repository.dart',
+        'repositoryImport': '../../domain/repositories/auth_repository.dart',
         'repositoryType': 'AuthRepository',
       },
     );
@@ -343,6 +322,12 @@ abstract class PatternBase {
     print('');
     // ignore: avoid_print
     print('🎛️  State Management: ${stateManagement.displayName}');
+    // ignore: avoid_print
+    print('');
+    // ignore: avoid_print
+    print('📦 Dependencies installed automatically!');
+    // ignore: avoid_print
+    print('🚀 You can now start developing your app!');
     // ignore: avoid_print
     print('');
   }

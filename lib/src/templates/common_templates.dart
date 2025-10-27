@@ -81,7 +81,7 @@ class User {
 
   /// User model template
   static const String userModelTemplate = '''
-import '../entities/user.dart';
+import '../../domain/entities/user.dart';
 
 /// User data model
 class UserModel extends User {
@@ -123,7 +123,7 @@ class UserModel extends User {
 
   /// Auth repository template
   static const String authRepositoryTemplate = '''
-import '../entities/user.dart';
+import '../../domain/entities/user.dart';
 
 /// Authentication repository contract
 abstract class AuthRepository {
@@ -137,8 +137,8 @@ abstract class AuthRepository {
 
   /// Auth repository implementation template
   static const String authRepositoryImplTemplate = '''
-import '../repositories/auth_repository.dart';
-import '../entities/user.dart';
+import '../../domain/repositories/auth_repository.dart';
+import '../../domain/entities/user.dart';
 import '../models/user_model.dart';
 
 class AuthRepositoryImpl implements AuthRepository {

@@ -188,6 +188,7 @@ class ApiService {
 
     fileWriter.writeFile('lib/services/auth_service.dart', '''
 import '../models/user.dart';
+import 'api_service.dart';
 
 /// Authentication service
 class AuthService {
@@ -243,9 +244,6 @@ class AuthService {
       case StateManagement.getx:
         _createGetxAuthController();
         break;
-      case StateManagement.stateNotifier:
-        _createStateNotifierAuthController();
-        break;
     }
   }
 
@@ -253,7 +251,7 @@ class AuthService {
     fileWriter
         .writeFile('lib/features/auth/controllers/auth_controller.dart', '''
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../services/auth_service.dart';
+import '../../../services/auth_service.dart';
 
 class AuthState {
   final bool isLoading;
@@ -317,7 +315,7 @@ class AuthController extends Cubit<AuthState> {
     fileWriter
         .writeFile('lib/features/auth/controllers/auth_controller.dart', '''
 import 'package:flutter/foundation.dart';
-import '../../services/auth_service.dart';
+import '../../../services/auth_service.dart';
 
 class AuthController with ChangeNotifier {
   final AuthService authService;
@@ -368,7 +366,8 @@ class AuthController with ChangeNotifier {
     fileWriter
         .writeFile('lib/features/auth/controllers/auth_controller.dart', '''
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../services/auth_service.dart';
+import '../../../services/auth_service.dart';
+import '../../../services/api_service.dart';
 
 class AuthState {
   final bool isLoading;
@@ -436,7 +435,7 @@ final authControllerProvider = StateNotifierProvider<AuthController, AuthState>(
     fileWriter
         .writeFile('lib/features/auth/controllers/auth_controller.dart', '''
 import 'package:get/get.dart';
-import '../../services/auth_service.dart';
+import '../../../services/auth_service.dart';
 
 class AuthController extends GetxController {
   final AuthService authService;
@@ -475,70 +474,6 @@ class AuthController extends GetxController {
     _isAuthenticated.value = false;
     _userEmail.value = null;
     _error.value = null;
-  }
-}
-''');
-  }
-
-  void _createStateNotifierAuthController() {
-    fileWriter
-        .writeFile('lib/features/auth/controllers/auth_controller.dart', '''
-import 'package:state_notifier/state_notifier.dart';
-import '../../services/auth_service.dart';
-
-class AuthState {
-  final bool isLoading;
-  final String? error;
-  final bool isAuthenticated;
-  final String? userEmail;
-
-  const AuthState({
-    this.isLoading = false,
-    this.error,
-    this.isAuthenticated = false,
-    this.userEmail,
-  });
-
-  AuthState copyWith({
-    bool? isLoading,
-    String? error,
-    bool? isAuthenticated,
-    String? userEmail,
-  }) {
-    return AuthState(
-      isLoading: isLoading ?? this.isLoading,
-      error: error ?? this.error,
-      isAuthenticated: isAuthenticated ?? this.isAuthenticated,
-      userEmail: userEmail ?? this.userEmail,
-    );
-  }
-}
-
-class AuthController extends StateNotifier<AuthState> {
-  final AuthService authService;
-
-  AuthController({required this.authService}) : super(const AuthState());
-
-  Future<void> login(String email, String password) async {
-    state = state.copyWith(isLoading: true, error: null);
-    
-    try {
-      final user = await authService.login(email, password);
-      state = state.copyWith(
-        isLoading: false,
-        isAuthenticated: true,
-        userEmail: user.email,
-      );
-    } catch (e) {
-      state = state.copyWith(
-        isLoading: false,
-        error: 'Login failed: \$e',
-      );
-    }
-  }
-
-  void logout() {
-    state = const AuthState();
   }
 }
 ''');

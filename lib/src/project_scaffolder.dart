@@ -5,7 +5,6 @@ import '../utils/file_writer.dart';
 import 'architecture_patterns/pattern_base.dart';
 import 'architecture_patterns/clean_architecture_pattern.dart';
 import 'architecture_patterns/mvc_pattern.dart';
-import 'architecture_patterns/mvp_pattern.dart';
 import 'architecture_patterns/mvvm_pattern.dart';
 
 /// Scaffolds Flutter projects with different architecture patterns and state management
@@ -40,6 +39,9 @@ class ProjectScaffolder {
 
     final patternScaffolder = _createPatternScaffolder();
     patternScaffolder.scaffold();
+
+    // Run pub get after scaffolding
+    _runPubGet();
   }
 
   /// Creates the appropriate pattern scaffolder based on selected pattern
@@ -52,8 +54,6 @@ class ProjectScaffolder {
         return MvvmPattern(projectName, fileWriter, stateManagement);
       case ArchitecturePattern.mvc:
         return MvcPattern(projectName, fileWriter, stateManagement);
-      case ArchitecturePattern.mvp:
-        return MvpPattern(projectName, fileWriter, stateManagement);
     }
   }
 
@@ -72,5 +72,32 @@ class ProjectScaffolder {
       // ignore: avoid_print
       print('');
     }
+  }
+
+  /// Runs pub get to install dependencies
+  void _runPubGet() {
+    // ignore: avoid_print
+    print('📦 Installing dependencies...');
+
+    final process = Process.runSync(
+      'flutter',
+      ['pub', 'get'],
+      workingDirectory: projectName,
+      runInShell: true,
+    );
+
+    if (process.exitCode == 0) {
+      // ignore: avoid_print
+      print('✅ Dependencies installed successfully!');
+    } else {
+      // ignore: avoid_print
+      print('❌ Failed to install dependencies: ${process.stderr}');
+      // ignore: avoid_print
+      print(
+          '💡 You can manually run `flutter pub get` in the project directory.');
+    }
+
+    // ignore: avoid_print
+    print('');
   }
 }
