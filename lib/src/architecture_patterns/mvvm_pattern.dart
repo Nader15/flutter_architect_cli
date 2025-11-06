@@ -6,7 +6,8 @@ import 'pattern_base.dart';
 /// Implements MVVM pattern scaffolding with state management
 class MvvmPattern extends PatternBase {
   /// Creates a new MvvmPattern instance
-  MvvmPattern(super.projectName, super.fileWriter, super.stateManagement);
+  MvvmPattern(super.projectName, super.fileWriter, super.stateManagement,
+      {super.organization = 'com.example'});
 
   @override
   String getArchitecturePatternName() => 'MVVM Pattern';

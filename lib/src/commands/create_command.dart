@@ -60,6 +60,9 @@ class CreateCommand implements Command {
     // ignore: avoid_print
     print('');
 
+    // Get organization name
+    final organizationName = _getOrganizationName();
+
     // Show architecture pattern selection menu
     final selectedPattern = _selectArchitecturePattern();
 
@@ -74,18 +77,91 @@ class CreateCommand implements Command {
     print(
         '🎯 Selected State Management: ${selectedStateManagement.displayName}');
     // ignore: avoid_print
+    print('🏢 Organization: $organizationName');
+    // ignore: avoid_print
     print('');
 
     final scaffolder = ProjectScaffolder(
       projectName,
+      organization: organizationName,
       pattern: selectedPattern,
       stateManagement: selectedStateManagement,
     );
     scaffolder.scaffold();
   }
 
+  /// Gets organization name from user input with validation
+  /// Gets organization name from user input with validation
+  String _getOrganizationName() {
+    // ignore: avoid_print
+    print('');
+    // ignore: avoid_print
+    print('🏢 Organization Details');
+    // ignore: avoid_print
+    print('───────────────────────');
+    // ignore: avoid_print
+    print('Enter your organization/package name (e.g., com.mycompany)');
+    // ignore: avoid_print
+    print('This will be used for:');
+    // ignore: avoid_print
+    print('  • Android package name (e.g., com.mycompany.my_app)');
+    // ignore: avoid_print
+    print('  • iOS bundle identifier (e.g., com.mycompany.myApp)');
+    // ignore: avoid_print
+    print('  • Dart package imports');
+    // ignore: avoid_print
+    print('');
+
+    String? organization;
+    bool isValid = false;
+
+    while (!isValid) {
+      stdout.write('Organization (default: com.example): ');
+      final input = stdin.readLineSync()?.trim();
+
+      // Debug output
+      // ignore: avoid_print
+      print('DEBUG: User input: "$input"');
+
+      if (input == null || input.isEmpty) {
+        organization = 'com.example';
+        isValid = true;
+        // ignore: avoid_print
+        print('✓ Using default organization: com.example');
+      } else if (_isValidOrganization(input)) {
+        organization = input;
+        isValid = true;
+        // ignore: avoid_print
+        print('✓ Organization set to: $organization');
+      } else {
+        // ignore: avoid_print
+        print(
+            '❌ Invalid organization format. Please use format like: com.company, org.name, dev.domain');
+        // ignore: avoid_print
+        print('   Must contain only letters, numbers, dots, and underscores');
+        // ignore: avoid_print
+        print('');
+      }
+    }
+
+    // Debug output
+    // ignore: avoid_print
+    print('DEBUG: Organization finalized as: $organization');
+
+    return organization!;
+  }
+
+  /// Validates organization name format
+  bool _isValidOrganization(String org) {
+    // Basic validation: should contain at least one dot and valid characters
+    final regex = RegExp(r'^[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)+$');
+    return regex.hasMatch(org) && org.length >= 3;
+  }
+
   /// Displays architecture pattern selection menu and returns user's choice
   ArchitecturePattern _selectArchitecturePattern() {
+    // ignore: avoid_print
+    print('');
     // ignore: avoid_print
     print('📁 Please select an architecture pattern:');
     // ignore: avoid_print
@@ -98,7 +174,6 @@ class CreateCommand implements Command {
 
     // ignore: avoid_print
     print('');
-    // ignore: avoid_print
     stdout
         .write('Enter your choice (1-${ArchitecturePattern.values.length}): ');
 
@@ -109,7 +184,6 @@ class CreateCommand implements Command {
       while (choice == null ||
           choice < 1 ||
           choice > ArchitecturePattern.values.length) {
-        // ignore: avoid_print
         stdout.write(
             'Please enter a valid choice (1-${ArchitecturePattern.values.length}): ');
         input = stdin.readLineSync();
@@ -143,7 +217,6 @@ class CreateCommand implements Command {
 
     // ignore: avoid_print
     print('');
-    // ignore: avoid_print
     stdout.write('Enter your choice (1-${StateManagement.values.length}): ');
 
     try {
@@ -153,7 +226,6 @@ class CreateCommand implements Command {
       while (choice == null ||
           choice < 1 ||
           choice > StateManagement.values.length) {
-        // ignore: avoid_print
         stdout.write(
             'Please enter a valid choice (1-${StateManagement.values.length}): ');
         input = stdin.readLineSync();

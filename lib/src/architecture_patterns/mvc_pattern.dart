@@ -6,7 +6,8 @@ import 'pattern_base.dart';
 /// Implements MVC pattern scaffolding with state management
 class MvcPattern extends PatternBase {
   /// Creates a new MvcPattern instance
-  MvcPattern(super.projectName, super.fileWriter, super.stateManagement);
+  MvcPattern(super.projectName, super.fileWriter, super.stateManagement,
+      {super.organization = 'com.example'});
 
   @override
   String getArchitecturePatternName() => 'MVC Pattern';

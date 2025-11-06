@@ -27,6 +27,8 @@ Choose from **Clean Architecture**, **MVC**, or **MVVM** patterns with interacti
 - 🎯 **Advanced Template System**: Dynamic code generation with 80% less duplication  
 - 🚀 **Optimized Performance**: Faster project generation and better maintainability  
 - 🔧 **Modular Architecture**: Clean separation of concerns and extensible design  
+- 🏢 **Custom Package Names**: Interactive organization/package name input during project creation
+- ✅ **Multi-Platform Support**: Complete Flutter projects with all platform folders (Android, iOS, Web, Windows, macOS, Linux)
 
 ---
 
@@ -57,6 +59,17 @@ You'll be prompted to select an architecture pattern and state management:
 ```
 🚀 Creating Flutter project: my_app
 
+🏢 Organization Details
+───────────────────────
+Enter your organization/package name (e.g., com.mycompany)
+This will be used for:
+  • Android package name (e.g., com.mycompany.my_app)
+  • iOS bundle identifier (e.g., com.mycompany.myApp)
+  • Dart package imports
+
+Organization (default: com.example): com.mycompany
+✓ Organization set to: com.mycompany
+
 📁 Please select an architecture pattern:
 
 1. Clean Architecture Pattern
@@ -76,8 +89,10 @@ Enter your choice (1-4): 1
 
 🎯 Selected Architecture: Clean Architecture Pattern
 🎯 Selected State Management: BLoC (Cubit)
+🏢 Organization: com.mycompany
 
 ✅ Clean Architecture project created successfully!
+
 ```
 
 The CLI will scaffold your complete project structure with the selected architecture and state management — start developing immediately!

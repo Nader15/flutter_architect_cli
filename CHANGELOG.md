@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+
+- **FIX**: Resolved `MultiProvider` assertion error by adding placeholder provider to prevent empty children list
+- **FEATURE**: Added interactive organization/package name prompt during project creation
+- **ENHANCEMENT**: Complete Flutter project generation with all platform folders (android/, ios/, web/, windows/, etc.)
+- **IMPROVEMENT**: Better user experience with clear organization input validation and guidance
 
 ## 1.1.0
 

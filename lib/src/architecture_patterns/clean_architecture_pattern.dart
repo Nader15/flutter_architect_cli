@@ -6,7 +6,8 @@ import 'pattern_base.dart';
 class CleanArchitecturePattern extends PatternBase {
   /// Creates a new CleanArchitecturePattern instance
   CleanArchitecturePattern(
-      super.projectName, super.fileWriter, super.stateManagement);
+      super.projectName, super.fileWriter, super.stateManagement,
+      {super.organization = 'com.example'});
 
   @override
   String getArchitecturePatternName() => 'Clean Architecture';

@@ -9,6 +9,9 @@ class TemplateEngine {
   /// Project name
   final String projectName;
 
+  /// Organization name
+  final String organization;
+
   /// State management choice
   final StateManagement stateManagement;
 
@@ -16,6 +19,7 @@ class TemplateEngine {
   TemplateEngine({
     required this.fileWriter,
     required this.projectName,
+    required this.organization,
     required this.stateManagement,
   });
 
@@ -26,6 +30,7 @@ class TemplateEngine {
     // Add common variables
     final allVariables = {
       'projectName': projectName,
+      'organization': organization,
       'stateManagement': stateManagement.displayName,
       'stateManagementImport': getStateManagementImport(),
       'stateManagementFolder': getStateManagementFolder(),

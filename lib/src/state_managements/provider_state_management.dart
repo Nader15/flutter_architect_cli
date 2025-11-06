@@ -64,7 +64,8 @@ abstract class BaseProvider extends ChangeNotifier {
   String createAppWrapper(String projectName, String homeWidget) {
     return '''MultiProvider(
       providers: [
-        // Add your Provider providers here
+        // TODO: Add your actual providers here
+      Provider(create: (_) => Object()), // Placeholder provider
       ],
       child: MaterialApp(
         title: '$projectName',

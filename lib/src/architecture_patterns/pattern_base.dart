@@ -1,3 +1,4 @@
+import 'dart:io';
 import '../../utils/file_writer.dart';
 import '../commands/create_command.dart';
 import '../templates/template_engine.dart';
@@ -10,6 +11,9 @@ import '../state_managements/state_management_factory.dart';
 abstract class PatternBase {
   /// The name of the project
   late final String projectName;
+
+  /// The organization/package name
+  late final String organization;
 
   /// File writer utility
   final FileWriter fileWriter;
@@ -24,24 +28,45 @@ abstract class PatternBase {
   late final TemplateEngine templateEngine;
 
   /// Creates a new PatternBase instance
-  PatternBase(this.projectName, this.fileWriter, this.stateManagement) {
-    stateManagementImpl =
-        StateManagementFactory.create(stateManagement, fileWriter);
-    templateEngine = TemplateEngine(
-      fileWriter: fileWriter,
-      projectName: projectName,
-      stateManagement: stateManagement,
-    );
-  }
+  PatternBase(
+    this.projectName,
+    this.fileWriter,
+    this.stateManagement, {
+    this.organization = 'com.example',
+  })  : stateManagementImpl =
+            StateManagementFactory.create(stateManagement, fileWriter),
+        templateEngine = TemplateEngine(
+          fileWriter: fileWriter,
+          projectName: projectName,
+          organization: organization,
+          stateManagement: stateManagement,
+        );
 
   /// Scaffolds the complete project structure
   void scaffold() {
+    // Check if this is a new project or existing structure
+    final projectDir = Directory(projectName);
+    final isNewProject = !projectDir.existsSync();
+
+    if (isNewProject) {
+      // ignore: avoid_print
+      print('🆕 Creating new project structure...');
+    } else {
+      // ignore: avoid_print
+      print('🔄 Updating existing project structure...');
+    }
+
     createStructure();
     createPubspecFile();
     createMainFiles();
     createCoreFiles();
     createStateManagementFiles();
-    _printSuccessMessage();
+
+    if (isNewProject) {
+      _printSuccessMessage();
+    } else {
+      _printUpdateMessage();
+    }
   }
 
   /// Creates the directory structure - must be implemented by subclasses
@@ -328,6 +353,39 @@ abstract class PatternBase {
     print('📦 Dependencies installed automatically!');
     // ignore: avoid_print
     print('🚀 You can now start developing your app!');
+    // ignore: avoid_print
+    print('');
+  }
+
+  /// Prints update message for existing projects
+  void _printUpdateMessage() {
+    // ignore: avoid_print
+    print('✅ ${getArchitecturePatternName()} structure updated successfully!');
+    // ignore: avoid_print
+    print('');
+    // ignore: avoid_print
+    print('📁 Updated ${getArchitecturePatternName()} Structure:');
+    // ignore: avoid_print
+    print('');
+    printStructureInfo();
+    // ignore: avoid_print
+    print('');
+    // ignore: avoid_print
+    print('🎛️  State Management: ${stateManagement.displayName}');
+    // ignore: avoid_print
+    print('');
+    // ignore: avoid_print
+    print('📦 Dependencies updated!');
+    // ignore: avoid_print
+    print('');
+    // ignore: avoid_print
+    print('⚠️  IMPORTANT:');
+    // ignore: avoid_print
+    print('   • Review the updated structure');
+    // ignore: avoid_print
+    print('   • Check for any merge conflicts in existing files');
+    // ignore: avoid_print
+    print('   • Update your existing code to match the new architecture');
     // ignore: avoid_print
     print('');
   }
