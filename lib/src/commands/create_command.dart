@@ -50,8 +50,9 @@ class CreateCommand implements Command {
 
   @override
   void execute(ArgResults results) {
-    final projectName =
-        results.rest.isNotEmpty ? results.rest[0] : 'my_flutter_app';
+    final projectName = _getProjectName(results);
+    // final projectName =
+    //     results.rest.isNotEmpty ? results.rest[0] : 'my_flutter_app';
 
     // ignore: avoid_print
     print('');
@@ -90,6 +91,55 @@ class CreateCommand implements Command {
     scaffolder.scaffold();
   }
 
+  /// Gets project name from user input with validation
+  String _getProjectName(ArgResults results) {
+    String? projectName = results.rest.isNotEmpty ? results.rest[0] : null;
+    bool isValid = false;
+
+    // Affiche la bannière uniquement si le nom n'est pas passé en argument
+    if (projectName == null) {
+      // ignore: avoid_print
+      print('');
+      // ignore: avoid_print
+      print('🚀 Project Name');
+      // ignore: avoid_print
+      print('──────────────────');
+    }
+
+    while (!isValid) {
+      if (projectName == null || projectName.isEmpty) {
+        stdout.write('Enter project name (e.g., my_cool_app): ');
+        projectName = stdin.readLineSync()?.trim();
+      }
+
+      if (projectName == null || projectName.isEmpty) {
+        isValid = false; // Continue la boucle si l'entrée est vide
+      } else if (_isValidSnakeCase(projectName)) {
+        isValid = true;
+      } else {
+        // ignore: avoid_print
+        print(
+            '❌ Invalid project name. Please use snake_case (e.g., my_project_name)');
+        // ignore: avoid_print
+        print(
+            '   Must contain only lowercase letters, and underscores.');
+        // ignore: avoid_print
+        print('');
+        projectName = null; // Force la re-saisie
+      }
+    }
+    // ignore: avoid_print
+    print('✓ Project name set to: $projectName');
+    return projectName!;
+  }
+
+  /// Validates project name format (snake_case)
+  bool _isValidSnakeCase(String name) {
+    // Doit être en snake_case minuscule
+    final regex = RegExp(r'^[a-z0-9_]+$');
+    return regex.hasMatch(name) && name.isNotEmpty;
+  }
+
   /// Gets organization name from user input with validation
   /// Gets organization name from user input with validation
   String _getOrganizationName() {
@@ -101,6 +151,8 @@ class CreateCommand implements Command {
     print('───────────────────────');
     // ignore: avoid_print
     print('Enter your organization/package name (e.g., com.mycompany)');
+    // ignore: avoid_print
+    print('   (Must be lowercase and use dots, e.g., com.my_company)');
     // ignore: avoid_print
     print('This will be used for:');
     // ignore: avoid_print
@@ -116,7 +168,7 @@ class CreateCommand implements Command {
     bool isValid = false;
 
     while (!isValid) {
-      stdout.write('Organization (default: com.example): ');
+      stdout.write('Organization (lowercase, default: com.example): ');
       final input = stdin.readLineSync()?.trim();
 
       // Debug output
@@ -138,7 +190,7 @@ class CreateCommand implements Command {
         print(
             '❌ Invalid organization format. Please use format like: com.company, org.name, dev.domain');
         // ignore: avoid_print
-        print('   Must contain only letters, numbers, dots, and underscores');
+        print('   Must contain only lowercase letters, dots, and underscores.');
         // ignore: avoid_print
         print('');
       }
@@ -154,7 +206,8 @@ class CreateCommand implements Command {
   /// Validates organization name format
   bool _isValidOrganization(String org) {
     // Basic validation: should contain at least one dot and valid characters
-    final regex = RegExp(r'^[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)+$');
+    final regex = RegExp(r'^[a-z0-9_]+(\.[a-z0-9_]+)+$');
+    //final regex = RegExp(r'^[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)+$');
     return regex.hasMatch(org) && org.length >= 3;
   }
 
